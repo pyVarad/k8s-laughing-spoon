@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: poll-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: polling-app
+  template:
+    metadata:
+      name: poll-app
+      labels:
+        app: polling-app
+    spec:
+      containers:
+      - name: poll-app
+        image: varadag/count-visits-app
+        ports:
+          - containerPort: 5000
